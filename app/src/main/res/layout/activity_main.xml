@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Score Table -->
+        <TableLayout
+            android:id="@+id/ginrummyscorer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
+
+            <TableRow>
+                <TextView
+                    android:text="Player1"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:padding="12dp"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:text="Player2"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:padding="12dp"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:text="Result"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:padding="12dp"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:text=""
+                    android:padding="12dp" />
+            </TableRow>
+        </TableLayout>
+
+        <!-- Score Input -->
+        <EditText
+            android:id="@+id/scoreInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Score"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Result Spinner -->
+        <Spinner
+            android:id="@+id/resultInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:padding="4dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Winner Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Winner"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="4dp" />
+
+        <!-- Winner Buttons -->
+        <LinearLayout
+            android:id="@+id/winnerButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/player1Button"
+                android:text="player1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:layout_marginEnd="8dp"
+                android:minHeight="48dp" />
+
+            <Button
+                android:id="@+id/player2Button"
+                android:text="player2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:minHeight="48dp" />
+        </LinearLayout>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/submitButton"
+            android:text="Submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#6200EE"
+            android:textColor="#FFFFFF"
+            android:minHeight="48dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+</ScrollView>
