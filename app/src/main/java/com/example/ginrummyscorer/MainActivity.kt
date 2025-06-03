@@ -20,8 +20,6 @@ class MainActivity : Activity() {
     private var selectedWinner: Player? = null
     private var player1: Player = Player("Brodie")
     private var player2: Player = Player("Paige")
-    private var player1Total = 0
-    private var player2Total = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,11 +111,11 @@ class MainActivity : Activity() {
         val score = scoreText.toInt()
 
         val (player1TextView, player2TextView) = if (winner == player1) {
-            player1Total += score
+            player1.score += score
             TextView(this).apply { text = score.toString(); setPadding(8, 8, 8, 8) } to
                     TextView(this).apply { text = "0"; setPadding(8, 8, 8, 8) }
         } else {
-            player2Total += score
+            player2.score += score
             TextView(this).apply { text = "0"; setPadding(8, 8, 8, 8) } to
                     TextView(this).apply { text = score.toString(); setPadding(8, 8, 8, 8) }
         }
@@ -148,14 +146,14 @@ class MainActivity : Activity() {
     private fun updateTotalsRow() {
         totalsRow.removeAllViews()
 
-        val player1TotalText = TextView(this).apply {
-            text = player1Total.toString()
+        val player1ScoreText = TextView(this).apply {
+            text = player1.score.toString()
             setPadding(8, 8, 8, 8)
             setTextColor(Color.BLACK)
         }
 
-        val player2TotalText = TextView(this).apply {
-            text = player2Total.toString()
+        val player2ScoreText = TextView(this).apply {
+            text = player2.score.toString()
             setPadding(8, 8, 8, 8)
             setTextColor(Color.BLACK)
         }
@@ -166,8 +164,8 @@ class MainActivity : Activity() {
             setTextColor(Color.BLACK)
         }
 
-        totalsRow.addView(player1TotalText)
-        totalsRow.addView(player2TotalText)
+        totalsRow.addView(player1ScoreText)
+        totalsRow.addView(player2ScoreText)
         totalsRow.addView(labelText)
     }
 }
