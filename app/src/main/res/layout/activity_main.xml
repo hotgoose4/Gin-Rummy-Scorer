@@ -12,7 +12,7 @@
 
         <!-- Score Table -->
         <TableLayout
-            android:id="@+id/ginrummyscorer"
+            android:id="@+id/scoreTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="16dp"
@@ -58,7 +58,10 @@
             android:background="@android:drawable/edit_text"
             android:padding="12dp"
             android:textSize="16sp"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:importantForAutofill="no"
+            android:autofillHints="" />
+
 
         <!-- Result Spinner -->
         <Spinner
@@ -82,6 +85,7 @@
         <!-- Winner Buttons -->
         <LinearLayout
             android:id="@+id/winnerButtons"
+            style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -91,6 +95,7 @@
 
             <Button
                 android:id="@+id/player1Button"
+                style="?android:attr/buttonBarButtonStyle"
                 android:text="player1"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -101,6 +106,7 @@
 
             <Button
                 android:id="@+id/player2Button"
+                style="?android:attr/buttonBarButtonStyle"
                 android:text="player2"
                 android:layout_width="0dp"
                 android:layout_weight="1"

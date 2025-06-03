@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.*
 
 class MainActivity : Activity() {
-
     private lateinit var scoreTable: TableLayout
     private lateinit var scoreInput: EditText
     private lateinit var resultInput: Spinner
@@ -28,7 +27,7 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        scoreTable = findViewById(R.id.ginrummyscorer)
+        scoreTable = findViewById(R.id.scoreTable)
         scoreInput = findViewById(R.id.scoreInput)
         resultInput = findViewById(R.id.resultInput)
         player1Button = findViewById(R.id.player1Button)
@@ -40,8 +39,8 @@ class MainActivity : Activity() {
         val player2Header = headerRow.getChildAt(1) as TextView
         player1Header.text = player1.name
         player2Header.text = player2.name
-        player1Button.setText(player1.name)
-        player2Button.setText(player2.name)
+        player1Button.text = player1.name
+        player2Button.text = player2.name
 
         // Setup result spinner
         val resultOptions = arrayOf("Knock", "Gin", "Big Gin", "Undercut")
@@ -91,18 +90,19 @@ class MainActivity : Activity() {
         val result = resultInput.selectedItem.toString()
         val winner = selectedWinner
 
-        if (scoreText.isEmpty() || scoreText.toIntOrNull() == null) {
-            Toast.makeText(this, "Please enter a valid numeric score", Toast.LENGTH_SHORT).show()
+        //if score is empty
+        if (scoreText.isEmpty()) {
+            Toast.makeText(this, "Please enter a score", Toast.LENGTH_SHORT).show()
             return
         }
 
+        //if winner is not selected
         if (winner == null) {
             Toast.makeText(this, "Please select a winner", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val score = scoreText.toInt()
-
+        //initialises new row
         val newRow = TableRow(this).apply {
             layoutParams = TableRow.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -110,7 +110,9 @@ class MainActivity : Activity() {
             )
         }
 
-        val (p1TextView, p2TextView) = if (winner == player1) {
+        val score = scoreText.toInt()
+
+        val (player1TextView, player2TextView) = if (winner == player1) {
             player1Total += score
             TextView(this).apply { text = score.toString(); setPadding(8, 8, 8, 8) } to
                     TextView(this).apply { text = "0"; setPadding(8, 8, 8, 8) }
@@ -125,15 +127,9 @@ class MainActivity : Activity() {
             setPadding(8, 8, 8, 8)
         }
 
-        val blank = TextView(this).apply {
-            text = ""
-            setPadding(8, 8, 8, 8)
-        }
-
-        newRow.addView(p1TextView)
-        newRow.addView(p2TextView)
+        newRow.addView(player1TextView)
+        newRow.addView(player2TextView)
         newRow.addView(resultTextView)
-        newRow.addView(blank)
 
         // Re-add separator and totals at the bottom
         scoreTable.removeView(separator)
@@ -170,14 +166,8 @@ class MainActivity : Activity() {
             setTextColor(Color.BLACK)
         }
 
-        val blankText = TextView(this).apply {
-            text = ""
-            setPadding(8, 8, 8, 8)
-        }
-
         totalsRow.addView(player1TotalText)
         totalsRow.addView(player2TotalText)
         totalsRow.addView(labelText)
-        totalsRow.addView(blankText)
     }
 }
